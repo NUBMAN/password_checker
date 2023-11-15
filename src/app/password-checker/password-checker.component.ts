@@ -36,14 +36,12 @@ export class PasswordCheckerComponent implements OnInit{
         console.log('It\'s password too short')
       } 
 
-      if (isEasy) {
+      if (!isEasy) {
         this.colorBlank = 'red';
         this.colorBlank2 = 'grey';
         this.colorBlank3 = 'grey'
         console.log('It\'s easy password')
       }  
-
-      else console.log('Now everything is okay')
 
 
       

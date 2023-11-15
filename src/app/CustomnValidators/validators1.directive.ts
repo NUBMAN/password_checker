@@ -11,20 +11,19 @@ export function validatorPassword1(): ValidatorFn {
       return null;
     }
 
-    const hasLetter = /[a-zA-Z]/.test(value);
-    const hasDigit = /\d/.test(value);
-    const hasSymbol = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(value);
-
-    const isValidCombination = (hasLetter && hasDigit) || (hasLetter && hasSymbol) || (hasDigit && hasSymbol);
-
-    const isValid = hasLetter && hasDigit && hasSymbol && !isValidCombination;
-
-    console.log('Value:', value);
-    console.log('Validation result:', isValid);
-
-
-
-    return isValid ? null : {PasswordValid1: true}
+     // Check if the password contains at least one letter, one digit, and one symbol
+     const onlyLetters = /^[a-zA-Z]+$/.test(value);
+     const onlyDigits = /^\d+$/.test(value);
+     const onlySymbols = /^[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]+$/.test(value);
+ 
+     const isEasy = onlyLetters || onlyDigits || onlySymbols;
+     const isValid = !isEasy; // Password is valid if it's not an easy one
+ 
+     console.log('Value:', value);
+     console.log('Validation result:', isValid);
+     console.log('It\'s easy password:', isEasy);
+ 
+     return isValid ? null : { PasswordValid1: true };
 
   };
 }
