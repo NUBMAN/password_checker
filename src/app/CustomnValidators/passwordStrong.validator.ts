@@ -1,8 +1,8 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 export function validatorPasswordStrong(): ValidatorFn {
-    return (control: AbstractControl):  {[key: string] : boolean}  | null =>{
-      
+  return (control: AbstractControl): { [key: string]: boolean } | null => {
+
     if (control.value === '') {
       return null;
     }
@@ -12,7 +12,7 @@ export function validatorPasswordStrong(): ValidatorFn {
     const hasSymbols = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(control.value);
     const isStrong = (hasLetters && hasSymbols && hasDigits)
 
-    return isStrong ?  { passwordStrong: true } : null;
+    return isStrong ? { passwordStrong: true } : null;
 
   };
 }   
